@@ -6,6 +6,16 @@ module.exports = {
       'Access-Control-Allow-Origin': '*',
     },
   },
+  // 解决子项目字体文件加载失败的问题(由于qiankun 将子项目的 <link> 改成 <style> 执行导致的)
+  chainWebpack: (config) => {
+    config.module
+      .rule('fonts')
+      .test(/.(ttf|otf|eot|woff|woff2)$/)
+      .use('url-loader')
+      .loader('url-loader')
+      .tap(options => ({ name: '/fonts/[name].[hash:8].[ext]' }))
+      .end()
+  },
   // 自定义webpack配置
   configureWebpack: {
     output: {
