@@ -45,7 +45,7 @@ export async function mount(props) {
 
 export async function unmount() {
   instance.$destroy();
-  instance.$el.innerHTML = "";
+  instance.$el.innerHTML = "";//解决子项目内容泄露问题
   instance = null;
   router = null;
 }

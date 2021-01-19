@@ -6,7 +6,7 @@ module.exports = {
       'Access-Control-Allow-Origin': '*',
     },
   },
-  // 解决子项目字体文件加载失败的问题(由于qiankun 将子项目的 <link> 改成 <style> 执行导致的)
+  // 解决子项目字体文件加载失败的问题(由于qiankun 将子项目的 <link> 改成 <style> 执行导致的),在vue-cli4.x中自动处理了
   chainWebpack: (config) => {
     config.module
       .rule('fonts')
